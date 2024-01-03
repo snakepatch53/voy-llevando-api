@@ -19,9 +19,31 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'lastname',
+        'phone',
+        'address',
+        'location',
+        'city',
+        'photo',
+        'type',
+        'dni',
         'password',
+        'email',
     ];
+
+    public static $_TYPES = [
+        1 => 'Super Administrador',
+        2 => 'Administrador',
+        3 => 'Carrier',
+        4 => 'Cliente'
+    ];
+
+    protected $appends = ['type_name'];
+
+    public function getTypeNameAttribute()
+    {
+        return self::$_TYPES[$this->type];
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +63,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function alerts()
+    {
+        return $this->hasMany(Alert::class);
+    }
+
+    public function shipments()
+    {
+        return $this->hasMany(Shipment::class);
+    }
 }

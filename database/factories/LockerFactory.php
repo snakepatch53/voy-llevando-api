@@ -17,7 +17,9 @@ class LockerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name" => $this->faker->name(),
+            "popup" => $this->faker->randomElement([1, 0]),
+            "img" => $this->faker->randomElement(['1.png', '2.png', '3.png', '4.png', '5.png']),
         ];
     }
 }

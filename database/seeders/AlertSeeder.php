@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alert;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,17 +15,16 @@ class AlertSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            InfoSeeder::class,
-            LockerSeeder::class,
-            UserSeeder::class,
-            ShipmentSeeder::class,
-            AlertSeeder::class,
-            TrackingSeeder::class,
-            CategorySeeder::class,
-            SubcategorySeeder::class,
-            ProductSeeder::class,
-            ShipmentProductSeeder::class,
-        ]);
+        Alert::factory()
+            ->count(5)
+            ->hasTrackings(3)
+            ->hasProducts(3)
+            ->create();
+
+        Alert::factory()
+            ->count(5)
+            ->hasTrackings(3)
+            ->hasProducts(3)
+            ->create();
     }
 }

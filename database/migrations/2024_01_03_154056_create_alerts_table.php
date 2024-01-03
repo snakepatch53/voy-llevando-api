@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('store');
             $table->string('tracking_code');
             $table->string('bill_file');
-            $table->string('description');
-            $table->string('status');
+            $table->text('description');
+            $table->integer('status');
 
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('locker_id')->constrained('lockers');

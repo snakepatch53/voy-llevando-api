@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Alert;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class TrackingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "place" => $this->faker->randomElement(['Bodega', 'Aeropuerto', 'Oficina de Correos', 'En tránsito', 'En reparto', 'Entregado']),
+            "description" => $this->faker->sentence(6),
+            "alert_id" => Alert::factory(),
         ];
     }
 }
